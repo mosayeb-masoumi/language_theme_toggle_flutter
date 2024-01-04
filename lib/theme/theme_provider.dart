@@ -6,12 +6,14 @@ class ThemeProvider extends ChangeNotifier{
 
   // ThemeData _currentTheme = ThemeData.light();
 
+
+  // final ThemeMode _themeMode = Prefs.getThemeMode();
+  // ThemeMode get themeMode => _themeMode;
+
   ThemeData _currentTheme = Prefs.getThemeMode() == ThemeMode.light? ThemeData.light():ThemeData.dark();
   ThemeData get currentTheme => _currentTheme;
 
 
-  final ThemeMode _themeMode = Prefs.getThemeMode();
-  ThemeMode get themeMode => _themeMode;
 
   Future<void> toggleTheme() async {
     _currentTheme = _currentTheme == ThemeData.light() ? ThemeData.dark() : ThemeData.light();
