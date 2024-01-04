@@ -21,7 +21,8 @@ void main() async {
 
   AppLanguage appLanguage = AppLanguage();
   await appLanguage.fetchLocale();
-  runApp(AppProviders(appLanguage: appLanguage,));
+
+  runApp(AppProviders(appLanguage: appLanguage));
 
 }
 
@@ -47,7 +48,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer2<AppLanguage , ThemeProvider>(
         builder: (context, languageProvider, themeProvider,child) {
-        return  MaterialApp(
+
+          // themeProvider.initializeTheme();
+
+          return  MaterialApp(
           locale: languageProvider.appLocal,
           supportedLocales: const [
             Locale('en', 'US'),
@@ -60,7 +64,15 @@ class MyApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate
           ],
 
-          // theme: themeProvider,
+          theme: themeProvider.currentTheme,
+          darkTheme: ThemeData.dark(),
+          themeMode: Prefs.getThemeMode(),
+
+
+
+
+
+          // themeMode: ThemeMode ,
           home: const HomePage(),
         );
       }

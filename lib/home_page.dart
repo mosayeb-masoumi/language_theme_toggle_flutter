@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test6/second_page.dart';
+import 'package:test6/theme/theme_provider.dart';
 import 'language/app_language.dart';
 import 'language/app_localizations.dart';
 
@@ -20,8 +21,18 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
 
     // var appLanguage = Provider.of<AppLanguage>(context);
-    var ss = AppLocalizations.of(context)!.locale;
-    var dd= ss;
+    // var ss = AppLocalizations.of(context)!.locale;  to get the local language
+
+    ThemeData currentTheme = Theme.of(context);
+
+// Check if the current theme is light or dark
+    if (currentTheme.brightness == Brightness.light) {
+      // Theme is currently set to light
+      print('Current theme is light');
+    } else {
+      // Theme is currently set to dark
+      print('Current theme is dark');
+    }
 
     return Scaffold(
 
@@ -51,6 +62,12 @@ class _HomePageState extends State<HomePage> {
 
             ],
           ),
+
+
+          ElevatedButton(onPressed: (){
+            context.read<ThemeProvider>().toggleTheme();
+          }, child: const Text("Toggle Theme")),
+
 
           ElevatedButton(onPressed: (){
             Navigator.push(
