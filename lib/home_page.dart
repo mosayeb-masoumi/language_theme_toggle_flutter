@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test6/second_page.dart';
+import 'package:test6/theme/app_colors.dart';
 import 'package:test6/theme/theme_provider.dart';
 import 'language/app_language.dart';
 import 'language/app_localizations.dart';
@@ -23,20 +24,13 @@ class _HomePageState extends State<HomePage> {
     // var appLanguage = Provider.of<AppLanguage>(context);
     // var ss = AppLocalizations.of(context)!.locale;  to get the local language
 
-    ThemeData currentTheme = Theme.of(context);
-
-// Check if the current theme is light or dark
-    if (currentTheme.brightness == Brightness.light) {
-      // Theme is currently set to light
-      print('Current theme is light');
-    } else {
-      // Theme is currently set to dark
-      print('Current theme is dark');
-    }
-
     return Scaffold(
+      backgroundColor: AppColors.primaryColor(context),
 
-      appBar: AppBar(title: Text(AppLocalizations.of(context)!.translate('title')),),
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.translate('title')),
+        backgroundColor: AppColors.primaryColor(context),
+      ),
 
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

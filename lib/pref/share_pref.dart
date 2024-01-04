@@ -21,12 +21,8 @@ class Prefs {
   static String getCountryCode() => _prefs?.getString("CountryCode") ?? "US";   // default value is "US"
 
 
-  // // get && set int theme_mode
-  // static Future<bool?> setThemeMode(ThemeMode themeMode) async => await _prefs?.setInt("ThemeMode", themeMode.index);
-  // static int getThemeMode() => _prefs?.getInt("ThemeMode") ?? ThemeMode.system.index;   // default value is "US"
-  //
-  //
 
+  // get && set theme mode
   static Future<bool> setThemeMode(ThemeMode themeMode) async =>
       await _prefs!.setInt("ThemeMode", themeMode.index);
   static ThemeMode getThemeMode() {
@@ -36,18 +32,5 @@ class Prefs {
         : ThemeMode.system;
   }
 
-
-  //
-  // static Future<void> setThemeMode(ThemeMode themeMode) async =>
-  //     await _prefs!.setInt("ThemeMode", themeMode.index);
-  //
-  // static Future<ThemeMode> getThemeMode() async {
-  //   final int? themeModeIndex = _prefs!.getInt("ThemeMode");
-  //   if (themeModeIndex != null && themeModeIndex < ThemeMode.values.length) {
-  //     return ThemeMode.values[themeModeIndex];
-  //   } else {
-  //     return ThemeMode.system;
-  //   }
-  // }
 
 }
